@@ -1,9 +1,9 @@
 import {useState} from 'react';
 
-const Product = ({productName}) => {
+const Product = ({count : pCount , productName}) => {
     
-    const[count, setCount] = useState(0);
-
+    const [count, setCount]  = useState(pCount);
+    
     return ( 
         <div>
              <span className="m-2 text-info" >{productName}</span>

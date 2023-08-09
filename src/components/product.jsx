@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 
 class Product extends Component {
     state = {  
-        count : 0 ,
-        productName : this.props.productName
+        count : this.props.count ,
+        productName : this.props.ProductName
     } 
     render() { 
         return (
@@ -19,6 +19,7 @@ class Product extends Component {
         );
     }
 
+    
     handleIncrement = () => {
         const {count} = this.state;
         this.setState({count : count + 1});
