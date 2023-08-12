@@ -1,12 +1,12 @@
 import {useState} from 'react';
 
-const Product = ({count : pCount , productName}) => {
+const Product = ({count : pCount , ProductName, id, onDelete}) => {
     
     const [count, setCount]  = useState(pCount);
     
     return ( 
         <div>
-             <span className="m-2 text-info" >{productName}</span>
+             <span className="m-2 text-info" >{ProductName}</span>
              <span className="m-2 badge bg-primary">{count === 0 ? 'zero' : count}</span>
              <button onClick = {handleIncrement} className="m-2 btn btn-sm btn-success">+</button>
              <button onClick = {handleDecrement} className="m-2 btn btn-sm btn-warning">-</button>
@@ -25,6 +25,8 @@ const Product = ({count : pCount , productName}) => {
 
     function handleDelete() {
         setCount(0);
+        console.log(id);
+        onDelete(id);
     }
 }
  
