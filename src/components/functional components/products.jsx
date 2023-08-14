@@ -1,31 +1,32 @@
 import { useState } from "react";
 import Product from "./product";
+import ProductsContext from "../contexts/productsContext";
+import { useContext } from "react";
 
 
-const Products = ({products, onReset, onIncrement,onDecrement, onDelete }) => {
-
+const Products = () => {
+    const productsContext = useContext(ProductsContext);
     return ( 
         <>
         <button className="btn btn-primary" onClick={handleReset}>Reset</button>
-        {products.map((p,index) => <Product onIncrement = {handleIncrement} onDecrement = {handleDecrement}
-         onDelete = {handleDelete}
+        {productsContext.products.map((p,index) => <Product 
          id = {p.id} key={index} count = {p.count} ProductName = {p.ProductName} />)}
         </>
      );
 
      function handleIncrement (productID) {
-        onIncrement(productID);
+        productsContext.onIncrement(productID);
     }
 
     function handleDecrement (productID) {
-        onDecrement(productID);
+        productsContext.onDecrement(productID);
     }
 
      function handleDelete(productID) {
-        onDelete(productID);    
+        productsContext.onDelete(productID);    
      } 
      function handleReset(){
-        onReset();
+        productsContext.onReset();
     }
 }
  

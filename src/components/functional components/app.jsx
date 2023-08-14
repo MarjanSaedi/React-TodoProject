@@ -1,6 +1,7 @@
 import Products from "./products";
 import Navbar from "./navbar";
 import { useState } from "react";
+import ProductsContext from "../contexts/productsContext";
 
 const App = () => {
     const [products, setProducts] = useState([{id : 1, count: 22, ProductName: 'laptop'}, 
@@ -9,10 +10,14 @@ const App = () => {
 
     return (  
         <>
-            <Navbar products = {products}/>
-            <Products products = {products} onDecrement = {handleDecrement}
-                                    onIncrement= {handleIncrement} onReset = {handleReset}
-                                    onDelete = {handleDelete} />
+        <ProductsContext.Provider value = {{products :products, 
+                                            onIncrement : handleIncrement,
+                                            onDecrement : handleDecrement,
+                                            onDelete : handleDelete,
+                                            onReset : handleReset}}>
+            <Navbar/>
+            <Products />
+        </ProductsContext.Provider>
         </>
     );
 
